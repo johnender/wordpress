@@ -20,6 +20,9 @@
                         <?php the_content(); ?>
                     </div> 
                 </div>
+
+                <!--  funcion para llamar un template, resive la carpeta y el nombre del archivo (la primera parte en el argumento 1 y la segunda parte en el otro) importante no agregar el .php-->
+                <?php get_template_part('template-parts/posts', 'navigation'); ?>
             <?php
             }
     } ?>
