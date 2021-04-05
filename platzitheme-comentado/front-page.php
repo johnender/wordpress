@@ -40,7 +40,7 @@
 
 
 
-        <div id="resultado"  class="row">
+        <div id="resultado"  class="row justify-content-center text-center">
 
             <!-- loop personalizado en php -->
             <?php

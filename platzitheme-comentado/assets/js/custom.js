@@ -13,7 +13,7 @@
           },
           success:function(data){ //lo hace cuando se ejecuta correctamente
               let html = "";
-              data.forEach(item => {
+              data.forEach(item => {  //agrega cada item a la variable
                   html += `<div class="col-md-4 col-12 my-3">
                       <figure>${item.imagen}</figure>
                       <h4 class="my-2">
@@ -21,7 +21,7 @@
                       </h4>
                   </div>`;
               })
-              $("#resultado").html(html);
+              $("#resultado").html(html); //cambia el div resultado por la variable html
           },
           error: function(error){ //cuando falla
               console.log(error);

@@ -150,7 +150,7 @@ function filtroProductos(){
             array(
                 'taxonomy' => 'categorias-productos',
                 'field' => 'slug',
-                'terms' => $_POST['categoria']
+                'terms' => $_POST['categoria']  //categoria enviada desde el select
             )
         )
     );
@@ -160,14 +160,14 @@ function filtroProductos(){
     if ($productos->have_posts()) {
         while($productos->have_posts()){
             $productos->the_post();
-            $return[] = array(
+            $return[] = array(  //elementos que pide para cada producto
                 'imagen' => get_the_post_thumbnail(get_the_ID(), 'large'),
                 'link' => get_permalink(),
                 'titulo' => get_the_title()
             );
         }
     }
-
+    //convierte el array a json para que js pueda recibirlo
     wp_send_json($return);
 }
 
