@@ -15,7 +15,32 @@
     <!-- contenedor para agregar los productos a la pagina principal -->
     <div class="lista-productos my-5">
         <h2 class='text-center'>PRODUCTOS</h2>
-        <div class="row">
+
+
+        <!-- Barra de busqueda -->
+        <div class="row my-5">
+            <div class="col-12">
+                <select class="form-control" name="categorias-productos" id="categorias-productos">
+                    <option value="">Categorías de Productos</option>
+                    <?php
+                        $args = array(
+                            'orderby'    => 'name', 
+                            'order'      => 'ASC',
+                            'hide_empty' => true    //si no hay productos en la categoria no la muestra
+                        );
+                        $terms = get_terms('categorias-productos', $args);  //trae las categorias existentes, usando taxonomia, el nombre es el slug
+
+                        foreach ($terms as $term){
+                            echo '<option value="'.$term->slug.'">'.$term->name.'</option>'; //muestra cada categoria, con el slug como id, el . se usa para concatenar variables
+                        }
+                    ?>
+                </select>
+            </div>
+        </div>
+
+
+
+        <div id="resultado"  class="row">
 
             <!-- loop personalizado en php -->
             <?php
