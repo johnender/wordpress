@@ -237,7 +237,7 @@ function pgRegisterBlock()
         'pgb/basic',  //slug del bloque
         array(
             'editor_script' => 'pg-block',
-            'render_callback' => 'pgRenderDynamicBlock'
+            'render_callback' => 'pgRenderDynamicBlock' //llama a la funcion dinamica
         )
     );
 }
@@ -245,3 +245,12 @@ function pgRegisterBlock()
 
 //hook para agregar al wordpress
 add_action('init', 'pgRegisterBlock');
+
+
+
+
+//funcion para bloques dinamicos
+function pgRenderDynamicBlock($attributes, $content)
+{
+    return '<h2>'.$attributes['content'].'</h2>';
+}
