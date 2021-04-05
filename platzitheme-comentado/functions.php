@@ -175,3 +175,45 @@ function filtroProductos(){
 
 add_action('wp_ajax_nopriv_filtroProductos','filtroProductos');
 add_action('wp_ajax_filtroProductos','filtroProductos');
+
+
+
+//el add_action es el hook para agregar la funcion a wordpress
+add_action('rest_api_init', function (){
+    register_rest_route(    //parametros: namespace, ruta/atributo dinamico y arreglo conm argumentos: metodo y el callback con el nombre de la funcion
+        'pg/v1', 
+        '/novedades/(?P<cantidad>\d+)', 
+        array(
+            'methods' => 'GET',
+            'callback' => 'novedadesAPI'
+        )
+    );
+});
+
+
+
+function novedadesAPI($data) //data corresponde al atributo definido despues de novedades, es decir, la cantidad
+{
+    $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => $data['cantidad'],  //define cuanto enviar
+        'order'     => 'ASC',
+        'orderby' => 'title'
+    );
+    $novedades = new WP_Query($args);
+   
+    if ($novedades->have_posts()) {
+        while($novedades->have_posts()){
+            $novedades->the_post();
+            $return[] = array(
+                'imagen' => get_the_post_thumbnail(get_the_ID(), 'large'),
+                'link' => get_permalink(),
+                'titulo' => get_the_title()
+            );
+        }
+    } else {
+        return null;
+    }
+   
+    return $return;     //la API se encarga de convertir el array a un archivo
+}
