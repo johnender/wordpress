@@ -17,9 +17,13 @@
                         <!--  funcion para buscar el tumbnail y definirle el tamanho -->
                         <?php the_post_thumbnail('large'); ?>
                     </div>
-                    <div class="col-6">
-                        <?php the_content(); ?>
-                    </div> 
+                    <div class="col-md-6 col-12">
+                        <!-- funcion de wordpress para imprimir los shortcuts del codigo fuente -->
+                        <?php echo do_shortcode('[contact-form-7 id="39" title="Contact form 1"]'); ?>
+                    </div>
+                    <div class="col-12">
+                        <?php the_content();?>
+                    </div>
                 </div>
 
                 <!-- buscar id del producto actual -->
