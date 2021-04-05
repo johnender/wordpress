@@ -39,8 +39,8 @@ function assets(){
         'custom',   //nombre del archivo
         'pg',   //nombre del objeto
         array(
-            'ajaxurl' => admin_url('admin-ajax.php'),
-            'apiurl' => home_url('/wp-json/pg/v1/')
+            'ajaxurl' => admin_url('admin-ajax.php'),   //URL para uso de Ajas en jquery
+            'apiurl' => home_url('/wp-json/pg/v1/') //url apra uso de la API
         )
     );
 }

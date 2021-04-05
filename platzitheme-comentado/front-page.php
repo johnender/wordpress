@@ -24,7 +24,7 @@
                     <option value="">Categorías de Productos</option>
                     <?php
                         $args = array(
-                            'orderby'    => 'name', 
+                            'orderby'    => 'name',
                             'order'      => 'ASC',
                             'hide_empty' => true    //si no hay productos en la categoria no la muestra
                         );
@@ -70,13 +70,26 @@
                         </h4>
                     </div>
 
-                    <?php 
+                    <?php
                 }
             }
 
             ?>
       </div>
     </div>
+
+            <!-- seccion para llamar a la API -->
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12">
+                <h2>Últimas Novedades</h2>
+            </div>
+        </div>
+        <div id="resultado-novedades" class="row">
+
+        </div>
+    </div>
+
 </main>
 
 <?php get_footer(); ?>
