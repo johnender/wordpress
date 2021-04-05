@@ -8,7 +8,8 @@
     <?php if(have_posts()){
             while(have_posts()){
                 the_post();
-            ?>
+                $taxonomy = get_the_terms(get_the_ID(), 'categorias-productos'); //funcion que trae la taxonomia, en este caso del id de post actual y la categoria a traer
+                ?>
                 <!-- my es de bootstart, margin eje y -->
                 <h1 class='my-5'>Este producto es: <?php the_title() ?></h1>
                 <div class="row align-items-center">
@@ -30,7 +31,14 @@
                     'posts_per_page' => -1,
                     'post__not_in'   => array($ID_producto_actual),
                     'order'     => 'ASC',
-                    'orderby' => 'title'
+                    'orderby' => 'title',
+                    'tax_query' => array(   //define la taxomia a buscar
+                        array(
+                            'taxonomy' => 'categorias-productos',
+                            'field' => 'slug',
+                            'terms' => $taxonomy[0]->slug   //primer elemento del array, es un objeto y se le pide el array
+                        )
+                    )
                 );
 
                 //trae las entradas
