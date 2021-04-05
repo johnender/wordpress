@@ -236,8 +236,14 @@ function pgRegisterBlock()
     register_block_type(
         'pgb/basic',  //slug del bloque
         array(
-            'editor_script' => 'pg-block',
-            'render_callback' => 'pgRenderDynamicBlock' //llama a la funcion dinamica
+            'editor_script' => 'pg-block', // Handler del Script que registramos arriba
+            'attributes'      => array( // Repetimos los atributos del bloque, pero cambiamos los objetos por arrays
+                'content' => array(
+                    'type'    => 'string',
+                    'default' => 'Hello world'
+                )
+            ),
+            'render_callback' => 'pgRenderDinamycBlock' // Función de callback para generar el SSR (Server Side Render)
         )
     );
 }
