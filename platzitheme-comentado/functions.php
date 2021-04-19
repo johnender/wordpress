@@ -227,14 +227,14 @@ function pgRegisterBlock()
     $asset_file = include_once get_template_directory().'/blocks/build/index.asset.php'; //archivo generado por el build
     //Registra el script
     wp_register_script(
-        'pgb-block',    //handler del script
-        get_template_directory_uri().'/blocks/build/index.js',  //
+        'pg-block',    //handler del script
+        get_template_directory_uri().'/blocks/build/index.js',
         $asset_file['dependencies'],
         $asset_file['version']
     );
 
     register_block_type(
-        'pgb/basic',  //slug del bloque
+        'pg/basic',  //slug del bloque
         array(
             'editor_script' => 'pg-block', // Handler del Script que registramos arriba
             'attributes'      => array( // Repetimos los atributos del bloque, pero cambiamos los objetos por arrays

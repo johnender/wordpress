@@ -4,11 +4,11 @@ import { TextControl, PanelBody, PanelRow } from '@wordpress/components';
 
 import ServerSideRender from '@wordpress/server-side-render'; // Esta librería está disponible desde que instalamos el paquete "wordpress/scripts" desde NPM
 
-registerBlockType('pgb/basic', {
+registerBlockType('pg/basic', {
 	title: 'Basic Block',
 	description: 'Este bloque no tiene ninguna funcionalidad, simplemente es un Hello World.',
 	icon: 'smiley',
-	category: 'layout',
+	category: 'text',
     keywords: [ 'wordpress', 'gutenberg', 'platzigift'],
     attributes: {
 		content: {
